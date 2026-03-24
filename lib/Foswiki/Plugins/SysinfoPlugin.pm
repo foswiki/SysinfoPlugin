@@ -28,7 +28,7 @@ use warnings;
 
 use Foswiki::Func ();
 
-our $VERSION = '0.01';
+our $VERSION = '1.00';
 our $RELEASE = '%$RELEASE%';
 our $SHORTDESCRIPTION = 'detailed operating system information';
 our $LICENSECODE = '%$LICENSECODE%';
