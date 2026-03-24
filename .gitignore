@@ -1,0 +1,10 @@
+/SysinfoPlugin_installer.pl
+/SysinfoPlugin_installer
+/SysinfoPlugin.md5
+/SysinfoPlugin.sha1
+/SysinfoPlugin.tgz
+/SysinfoPlugin.txt
+/SysinfoPlugin.zip
+
+pub/**/.store
+data/**/.store

@@ -1,0 +1,7 @@
+!noci
+data/System/SysinfoPlugin.txt 0644
+lib/Foswiki/Plugins/SysinfoPlugin/Config.spec 0644
+lib/Foswiki/Plugins/SysinfoPlugin/Core.pm 0644
+lib/Foswiki/Plugins/SysinfoPlugin/DEPENDENCIES 0644
+lib/Foswiki/Plugins/SysinfoPlugin/MANIFEST 0644
+lib/Foswiki/Plugins/SysinfoPlugin.pm 0644

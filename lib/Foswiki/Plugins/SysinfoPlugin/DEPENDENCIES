@@ -1,0 +1,2 @@
+Sys::CpuLoad,>=0,cpan,Required
+Sys::MemInfo,>=0,cpan,Required

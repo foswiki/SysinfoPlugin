@@ -1,0 +1,126 @@
+%META:TOPICINFO{author="micha" comment="rePref" date="1767956608" format="1.1" reprev="2" version="2"}%
+---+!! %TOPIC%
+%FORMFIELD{"Description"}%
+
+%TOC%
+
+---++ Description
+
+This plugin returns info about the server Foswiki is running on, that is:
+
+   * memory usage,
+   * disk usage and
+   * cpu usage
+
+Note that these are sensitive information reveiling the internals of the server that could
+potentially be used to cause harm its security. By default only users with admin rights have
+access to this information.
+
+---++ Syntax
+
+---+++ =%<nop>CPULOAD{...}%=
+
+| *Parameter* | *Description* | *Default* |
+| format | string to format results | 1min=$1min, 5min=$5min, 15min=$15min |
+| precision | fraction of returned floating point values | 2 |
+
+The format string may contain the following variables:
+
+   * =$1min= average load during the last minute
+   * =$5min= average load during the last 5 minutes
+   * =$15min= average load during the last 15 minutes
+
+Example:
+
+<verbatim>
+%CPULOAD{
+   precision="4"
+   format="
+      | *1min* | $1min |
+      | *5min* | $5min |
+      | *15min* | $15min |"
+}%
+</verbatim>
+
+---+++ =%<nop>DISKFREE{...}%=
+
+| *Parameter* | *Description* | *Default* |
+| header | string prepended to the result | |
+| format | format string used per device | device=$device, size=$size, used=$used, available=$available, percent=$percent |
+| separator | separator for each formatted line | |
+| footer | string appened to the result | |
+| include | regular expression a device or mount point must match to be included in the result | |
+| exclude | regular expression a device or mount point must match to be excluded in the result | |
+| human | format bytes in a human readable way | off |
+| blocksize | size of a block of disk | 1 if =human= is enabled, 1024 otherwise |
+| filepath | return information about the filesystem this file path is part of; returns all device informations if left empty | |
+| precision | fraction of returned floating point values | 2 |
+
+The format string may contain the following variables:
+
+   * =$device=: name of the device the filesystem is on
+   * =$mount=: mount point
+   * =$size=: size of the device
+   * =$used=: used disk space 
+   * =$available=: available disk space
+   * =$percent=: disk usage in percent
+
+Example:
+
+<verbatim>
+%DISKFREE{
+   human="on"
+   exclude="tmpfs"
+   header="| *Device* |  *Size* |  *Used* |  *Available* |  *Percent* | *Mount* |$n"
+   format="| $device |  $size |  $used |  $available |  $percent | $mount |$n"
+}%
+</verbatim>
+
+---+++ =%<nop>MEMINFO{...}%=
+
+| *Parameter* | *Description* | *Default* |
+| format | format string | total=$totalmem, free=$freemem, swap=$totalswap, free=$freeswap |
+| human | format bytes in a human readable way | off |
+| precision | fraction of returned floating point values | 2 |
+
+The format string may contain the following variables:
+
+   * =$totalmen=: amount of available memory
+   * =$freemem=: unused memory
+   * =$totalswap=: size of swap space
+   * =$freeswap=: unused swap space
+
+Example:
+
+<verbatim>
+%MEMINFO{
+   human="on" 
+   format="
+      | *Total Mem* | $totalmem |
+      | *Free Mem* | $freemem |
+      | *Swap Mem* | $totalswap |
+      | *Swap Free* | $freeswap |"
+}%
+</verbatim>
+
+---++ Installation Instructions
+%$INSTALL_INSTRUCTIONS%
+
+---++ Dependencies
+%$DEPENDENCIES%
+
+---++ Change History
+
+%TABLE{columnwidths="7em" tablewidth="100%"}%
+| | |
+
+%META:FORM{name="PackageForm"}%
+%META:FIELD{name="Author" title="Author" value="MichaelDaum"}%
+%META:FIELD{name="Version" title="Version" value="%25$VERSION%25"}%
+%META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
+%META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
+%META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%25$ROOTMODULE%25"}%
+%META:FIELD{name="Copyright" title="Copyright" value="2025-2026, MichaelDaum, All Rights Reserved"}%
+%META:FIELD{name="License" title="License" value="GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]])"}%
+%META:FIELD{name="Home" title="Home" value="http://foswiki.org/Extensions/%25$ROOTMODULE%25"}%
+%META:FIELD{name="Support" title="Support" value="http://foswiki.org/Support/%25$ROOTMODULE%25"}%
